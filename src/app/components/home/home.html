@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<div class="flex flex-col lg:flex-row">
+  <!-- LEFT MAIN SECTION -->
+  <div class="w-full lg:w-3/4 min-h-[calc(100vh-80px)] border border-[#fdc827] font-sans">
+    
+    <!-- TRENDING MOVIES -->
+    <div class="trending-movies">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 gap-3">
+        <h4 class="uppercase border-l-[5px] border-l-[#ff9900] font-bold">
+          Trending Movies
+        </h4>
+        <div class="text-[#ff9900] cursor-pointer">View All</div>
+      </div>
+
+      <div class="movie-thumbnail grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-5">
+        <div class="movie" *ngFor="let movie of trendingMovies">
+          <div class="cover cursor-pointer" (click)="goToMovie('trending', movie.id)">
+            <img [src]="movie.cover" class="w-full h-48 object-cover border rounded-md" alt="" />
+          </div>
+          <div class="details mt-2">
+            <div class="name font-bold h-[50px] cursor-pointer line-clamp-2"
+                 (click)="goToMovie('trending',movie.id)">
+              {{ movie.name }}
+            </div>
+            <div class="rating">
+              <app-rating [rating]="movie.rating" [max]="5"></app-rating>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THEATRE MOVIES -->
+    <div class="theatre-movies">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-5 gap-3">
+        <h4 class="uppercase border-l-[5px] border-l-[#ff9900] font-bold">
+          Popular in Theatres
+        </h4>
+        <div class="text-[#ff9900] cursor-pointer">View All</div>
+      </div>
+
+      <div class="movie-thumbnail grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-5">
+        <div class="movie" *ngFor="let movie of theatreMovies">
+          <div class="cover cursor-pointer" (click)="goToMovie('theatre', movie.id)">
+            <img [src]="movie.cover" class="w-full h-48 object-cover border rounded-md" alt="" />
+          </div>
+          <div class="details mt-2">
+            <div class="name font-bold h-[50px] cursor-pointer line-clamp-2"
+                 (click)="goToMovie('theatre', movie.id)">
+              {{ movie.name }}
+            </div>
+            <app-rating [rating]="movie.rating" [max]="5"></app-rating>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="w-full lg:w-1/4 min-h-[calc(100vh-80px)] px-5 py-5">
+    <h4 class="uppercase border-l-[5px] border-l-[#ff9900] font-bold">All Time Popular</h4>
+    <div class="movies mt-5 space-y-5">
+      <div class="movie flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+           *ngFor="let movie of popularMovies">
+        <div class="name font-bold cursor-pointer"
+             (click)="goToMovie('popular', movie.id)">
+          {{ movie.name }}
+        </div>
+        <div class="rating">
+          <app-rating [rating]="movie.rating"></app-rating>
+        </div>
+      </div>
+      <div class="text-[#ff9900] cursor-pointer">View all</div>
+    </div>
+  </div>
+</div>

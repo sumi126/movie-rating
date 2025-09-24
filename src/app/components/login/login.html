@@ -1,0 +1,40 @@
+<div class="login-container p-5">
+  <img
+    class="absolute sm:top-50 md:p-10 lg:left-5 lg:top-1 sm:w-50 md:w-100"
+    src="images/film.png"
+    alt="image"
+  />
+  <div class="logo">Rotten Potatoes</div>
+  <div
+    class="desc sm:w-120 md:w-180 lg:w-250 sm:text-2xl md:text-3xl lg:text-4xl"
+  >
+    Rotten Potatoes is the word's most trusted recommendation resources for
+    better quallity entertainment. Four friends sit down and review movies that
+    you absolutely should have seen already, but at least one of them hadn't.
+  </div>
+  <div class="login-form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        name="username"
+        [(ngModel)]="username"
+        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+      />
+    </div>
+    <div class="">
+      
+      <div class="absolute pl-15 text-red-500">{{errorMsg}}</div>
+      <button (click)="login()" class="p-2 mt-7 rounded bg-black text-white">Login</button>
+    </div>
+  </div>
+</div>
